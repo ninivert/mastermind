@@ -48,7 +48,7 @@ const rl = readline.createInterface({
 	prompt: 'Your guess: '
 })
 
-console.log(`Code is ${code}`)
+// console.log(`Code is ${code}`)
 
 console.log(getTokenCountPhrase())
 rl.prompt()
