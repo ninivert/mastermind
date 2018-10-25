@@ -19,7 +19,11 @@ const getPegs = str => {
 		if (code[i] === color) {
 			++blackPegs
 			goodIndexes.push(i)
-		} else if (code.indexOf(color) !== -1 && goodIndexes.indexOf(i) !== -1) {
+		}
+	})
+	colors.forEach((color, i) => {
+		if (code.indexOf(color) !== -1 && goodIndexes.indexOf(code.indexOf(color)) === -1) {
+			// IF code has color in it AND that color has not yet been awarded a black peg
 			++whitePegs
 		}
 	})
@@ -45,10 +49,10 @@ const readline = require('readline');
 const rl = readline.createInterface({
 	input: process.stdin,
 	output: process.stdout,
-	prompt: 'Your guess: '
+	prompt: `Your guess (${charset.join('/')}): `
 })
 
-// console.log(`Code is ${code}`)
+console.log(`Code is ${code}`)
 
 console.log(getTokenCountPhrase())
 rl.prompt()
