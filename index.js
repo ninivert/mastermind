@@ -14,10 +14,12 @@ const getPegs = str => {
 	let colors = str.split('')
 
 	let blackPegs = 0, whitePegs = 0
+	let goodIndexes = []
 	colors.forEach((color, i) => {
 		if (code[i] === color) {
 			++blackPegs
-		} else if (code.indexOf(color) !== -1) {
+			goodIndexes.push(i)
+		} else if (code.indexOf(color) !== -1 && goodIndexes.indexOf(i) !== -1) {
 			++whitePegs
 		}
 	})
@@ -46,7 +48,7 @@ const rl = readline.createInterface({
 	prompt: 'Your guess: '
 })
 
-// console.log(`Code is ${code}`)
+console.log(`Code is ${code}`)
 
 console.log(getTokenCountPhrase())
 rl.prompt()
