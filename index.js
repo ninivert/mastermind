@@ -13,20 +13,23 @@ const code = new Array(codeLength).fill().map(() => pick(charset))
 const getPegs = str => {
 	let colors = str.split('')
 
+	let codecopy = code.slice();
 	let blackPegs = 0, whitePegs = 0
-	let goodIndexes = []
-	colors.forEach((color, i) => {
-		if (code[i] === color) {
+
+	// Need to loop backwards because we are removing elements
+	for (let i = colors.length-1; i >= 0; --i) {
+		if (codecopy[i] === colors[i]) {
 			++blackPegs
-			goodIndexes.push(i)
+			// Remove color from code so it will not be checked again
+			codecopy.splice(i, 1)
 		}
-	})
-	colors.forEach((color, i) => {
-		if (code.indexOf(color) !== -1 && goodIndexes.indexOf(code.indexOf(color)) === -1) {
-			// IF code has color in it AND that color has not yet been awarded a black peg
+	}
+
+	for (let i = 0; i < colors.length; ++i) {	
+		if (codecopy.indexOf(colors[i]) !== -1) {
 			++whitePegs
 		}
-	})
+	}
 
 	return {
 		black: blackPegs,
@@ -35,7 +38,7 @@ const getPegs = str => {
 }
 
 // User input sanitization
-const colorRegExp = new RegExp(`([^(${charset.join('')})])`, 'g')
+const colorRegExp = new RegExp(`([^(${charset.join('')})])`, 'gi')
 const sanitize = str => str.replace(colorRegExp, '')
 const isValid = str => sanitize(str).split('').length === 4
 
@@ -52,7 +55,7 @@ const rl = readline.createInterface({
 	prompt: `Your guess (${charset.join('/')}): `
 })
 
-console.log(`Code is ${code}`)
+// console.log(`Code is ${code}`)
 
 console.log(getTokenCountPhrase())
 rl.prompt()
