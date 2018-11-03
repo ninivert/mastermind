@@ -5,87 +5,128 @@ html
 		link(rel="stylesheet" href="stylesheets/master.css")
 
 	body
+		main
+			#game_wrapper
+				#mastermind_wrapper
+					//- Generated with JS for the options
+					#mastermind
+						#code_wrapper
+							#code_slot
+								.code_piece
+								.code_piece
+								.code_piece
+								.code_piece
 
-		//- Generated with JS for the options
-		#mastermind
-			#board_wrapper
-				#board
-					#slots_wrapper
-						#slots
-							.slot
-								.piece
-								.piece
-								.piece
-								.piece
-							.slot
-								.piece
-								.piece
-								.piece
-								.piece
-							.slot
-								.piece
-								.piece
-								.piece
-								.piece
-							.slot
-								.piece
-								.piece
-								.piece
-								.piece
-							.slot
-								.piece
-								.piece
-								.piece
-								.piece
-							.slot
-								.piece
-								.piece
-								.piece
-								.piece
-					#pegs_wrapper
-						#pegs
-							.pegs
-								.peg
-								.peg
-								.peg
-								.peg
-							.pegs
-								.peg
-								.peg
-								.peg
-								.peg
-							.pegs
-								.peg
-								.peg
-								.peg
-								.peg
-							.pegs
-								.peg
-								.peg
-								.peg
-								.peg
-							.pegs
-								.peg
-								.peg
-								.peg
-								.peg
-							.pegs
-								.peg
-								.peg
-								.peg
-								.peg
-			#inputs_wrapper
-				#inputs
-					.input
-					.input
-					.input
-					.input
-					.input
-					.input
-			#submit-wrapper
-				input#submit(type="button" value="Submit")
+						#board_wrapper
+							#board
+								#slots_wrapper
+									#slots
+										.slot
+											.piece
+											.piece
+											.piece
+											.piece
+										.slot
+											.piece
+											.piece
+											.piece
+											.piece
+										.slot
+											.piece
+											.piece
+											.piece
+											.piece
+										.slot
+											.piece
+											.piece
+											.piece
+											.piece
+										.slot
+											.piece
+											.piece
+											.piece
+											.piece
+										.slot
+											.piece
+											.piece
+											.piece
+											.piece
+								#pegs_wrapper
+									#pegs
+										.pegs
+											.peg
+											.peg
+											.peg
+											.peg
+										.pegs
+											.peg
+											.peg
+											.peg
+											.peg
+										.pegs
+											.peg
+											.peg
+											.peg
+											.peg
+										.pegs
+											.peg
+											.peg
+											.peg
+											.peg
+										.pegs
+											.peg
+											.peg
+											.peg
+											.peg
+										.pegs
+											.peg
+											.peg
+											.peg
+											.peg
+						#inputs_wrapper
+							#inputs
+								.input
+								.input
+								.input
+								.input
+								.input
+								.input
+						#submit-wrapper
+							input#submit(type="button" value="Submit")
 
-		script(src="scripts/constants.js")
-		script(src="scripts/logic.js")
-		script(src="scripts/ui.js")
+				#sidebar
+					section#title
+					h1 Mastermind
+						br
+						small Use your brain and crack the code
+
+					section#rules
+					h2 Rules
+					p You are awarded:
+						ul
+							li One black peg for each exact color
+							li One white peg for each color present in the code
+						| That's all.
+
+					section#options
+						h2 Customize your game!
+						.option
+							p Code length
+							form#code_length
+						.option
+							p Code complexity
+							form#code_complexity
+						.option
+							p Slot count
+							form#slot_count
+						.option
+							p Augmented contrast
+							form#augmented_contrast
+						.option
+							form#reset
+
+
+		script(src="scripts/pegs.js")
+		script(src="scripts/generation.js")
 		script(src="scripts/controls.js")
+		script(src="scripts/main.js")

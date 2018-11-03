@@ -6,19 +6,39 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  background: #fcfcfc; }
 
 body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  overflow: auto;
+  padding: 2rem; }
+  body > main {
+    margin: auto;
+    height: 100%; }
+
+#game_wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center; }
-  body > * {
-    margin: auto; }
+  #game_wrapper #mastermind_wrapper {
+    margin-right: 4rem; }
+  @media screen and (max-width: 800px) {
+    #game_wrapper {
+      width: 100%;
+      display: block; }
+      #game_wrapper #mastermind_wrapper {
+        margin: auto; } }
 
 #mastermind {
   display: flex;
   flex-direction: column; }
+  #mastermind #code_wrapper,
   #mastermind #board_wrapper,
   #mastermind #inputs_wrapper {
     margin-bottom: 10px; }
@@ -26,23 +46,29 @@ body {
     margin-right: 10px; }
   #mastermind #board,
   #mastermind #inputs,
+  #mastermind #code_slot,
   #mastermind .pegs,
   #mastermind .slot {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center; }
-  #mastermind #inputs {
+  #mastermind #inputs,
+  #mastermind #code_slot {
     justify-content: space-between; }
   #mastermind .input,
-  #mastermind .piece {
+  #mastermind .piece,
+  #mastermind .code_piece {
     width: 50px;
     height: 50px;
-    background: #eee; }
-  #mastermind .piece {
+    background: #ebebeb; }
+  #mastermind .piece,
+  #mastermind .code_piece {
     transition: all 0.2s; }
-    #mastermind .piece.active {
-      transform: scale(0.8); }
+  #mastermind .piece.active {
+    transform: scale(0.8); }
+  #mastermind .code_piece.active {
+    animation: pop 0.4s cubic-bezier(0.25, 0.5, 0.5, 1.4); }
   #mastermind .pegs {
     height: 50px; }
   #mastermind .peg {
@@ -50,29 +76,23 @@ body {
     height: 25px;
     border-radius: 25px;
     margin-right: 5px;
-    background: #eee; }
+    background: #ebebeb; }
     #mastermind .peg:last-child {
       margin-right: 0; }
     #mastermind .peg.black, #mastermind .peg.white {
       animation: pop 0.4s cubic-bezier(0.25, 0.5, 0.5, 1.4);
-      box-shadow: 0 3.125px 6.25px rgba(0, 0, 0, 0.4); }
+      box-shadow: 0 3.125px 6.25px rgba(128, 128, 128, 0.8); }
     #mastermind .peg.black {
-      background: #222; }
+      background: #1a1a1a; }
     #mastermind .peg.white {
       background: #fff; }
-
-@keyframes pop {
-  from {
-    transform: scale(0); }
-  to {
-    transform: scale(1); } }
   #mastermind #submit {
     width: 100%;
     height: 50px;
     border: none;
     padding: 0;
     margin: 0;
-    background: #eee; }
+    background: #ebebeb; }
   #mastermind .input,
   #mastermind #submit {
     transition: all 0.2s;
@@ -81,4 +101,45 @@ body {
     #mastermind #submit:hover {
       z-index: 1;
       transform: scale(1.1);
-      box-shadow: 0 3.125px 12.5px rgba(0, 0, 0, 0.2); }
+      box-shadow: 0 3.125px 12.5px rgba(128, 128, 128, 0.4); }
+
+@keyframes pop {
+  from {
+    transform: scale(0); }
+  to {
+    transform: scale(1); } }
+
+#sidebar {
+  width: 100%;
+  font-family: sans-serif;
+  color: #1a1a1a; }
+  #sidebar h1 {
+    text-transform: uppercase;
+    font-weight: lighter;
+    letter-spacing: 4px; }
+    #sidebar h1 small {
+      text-transform: initial;
+      letter-spacing: initial;
+      font-size: 0.5em;
+      color: #666666; }
+  #sidebar h2 {
+    text-transform: uppercase;
+    font-size: 1rem; }
+  #sidebar section {
+    margin-bottom: 1rem; }
+  #sidebar .option {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem; }
+    #sidebar .option > * {
+      margin: 0;
+      flex: 1 1 50%; }
+    #sidebar .option input[type="checkbox"] {
+      display: none; }
+      #sidebar .option input[type="checkbox"] + label::after {
+        display: inline;
+        content: 'Nope'; }
+      #sidebar .option input[type="checkbox"]:checked + label::after {
+        display: inline;
+        content: 'Yup'; }
