@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box; }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  body > * {
+    margin: auto; }
+
+#mastermind {
+  display: flex;
+  flex-direction: column; }
+  #mastermind #board_wrapper,
+  #mastermind #inputs_wrapper {
+    margin-bottom: 10px; }
+  #mastermind #slots_wrapper {
+    margin-right: 10px; }
+  #mastermind #board,
+  #mastermind #inputs,
+  #mastermind .pegs,
+  #mastermind .slot {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; }
+  #mastermind #inputs {
+    justify-content: space-between; }
+  #mastermind .input,
+  #mastermind .piece {
+    width: 50px;
+    height: 50px;
+    background: #eee; }
+  #mastermind .piece {
+    transition: all 0.2s; }
+    #mastermind .piece.active {
+      transform: scale(0.8); }
+  #mastermind .pegs {
+    height: 50px; }
+  #mastermind .peg {
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    margin-right: 5px;
+    background: #eee; }
+    #mastermind .peg:last-child {
+      margin-right: 0; }
+    #mastermind .peg.black, #mastermind .peg.white {
+      animation: pop 0.4s cubic-bezier(0.25, 0.5, 0.5, 1.4);
+      box-shadow: 0 3.125px 6.25px rgba(0, 0, 0, 0.4); }
+    #mastermind .peg.black {
+      background: #222; }
+    #mastermind .peg.white {
+      background: #fff; }
+
+@keyframes pop {
+  from {
+    transform: scale(0); }
+  to {
+    transform: scale(1); } }
+  #mastermind #submit {
+    width: 100%;
+    height: 50px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: #eee; }
+  #mastermind .input,
+  #mastermind #submit {
+    transition: all 0.2s;
+    z-index: 0; }
+    #mastermind .input:hover,
+    #mastermind #submit:hover {
+      z-index: 1;
+      transform: scale(1.1);
+      box-shadow: 0 3.125px 12.5px rgba(0, 0, 0, 0.2); }
