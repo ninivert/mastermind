@@ -15,9 +15,11 @@
 			}
 		}
 
-		for (var _i = 0; _i < guess.length; ++_i) {
-			if (codecopy.indexOf(guess[_i]) !== -1) {
+		for (var _i = guess.length - 1; _i >= 0; --_i) {
+			var index = codecopy.indexOf(guess[_i]);
+			if (index !== -1) {
 				++whitePegs;
+				codecopy.splice(index, 1);
 			}
 		}
 

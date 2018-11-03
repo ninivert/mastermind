@@ -12,9 +12,11 @@
 			}
 		}
 
-		for (let i = 0; i < guess.length; ++i) {	
-			if (codecopy.indexOf(guess[i]) !== -1) {
+		for (let i = guess.length-1; i >= 0; --i) {
+			const index = codecopy.indexOf(guess[i])
+			if (index !== -1) {
 				++whitePegs
+				codecopy.splice(index, 1)
 			}
 		}
 
